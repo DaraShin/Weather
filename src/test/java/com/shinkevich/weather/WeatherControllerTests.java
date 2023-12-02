@@ -4,13 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,24 +16,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.shinkevich.weather.controller.WeatherController;
 import com.shinkevich.weather.controller.response.AverageWeatherResponse;
 import com.shinkevich.weather.controller.response.Location;
 import com.shinkevich.weather.controller.response.WeatherResponse;
-import com.shinkevich.weather.database.entity.Weather;
+import com.shinkevich.weather.exception.DateFormatException;
 import com.shinkevich.weather.exception.NoDataFoundException;
 import com.shinkevich.weather.exceptionhandler.RestExceptionHandler;
 import com.shinkevich.weather.service.WeatherService;
-import com.shinkevich.weather.exception.NoDataFoundException;
-import com.shinkevich.weather.exception.DateFormatException;
 
 public class WeatherControllerTests {
 	private MockMvc mockMvc;
@@ -123,6 +116,7 @@ public class WeatherControllerTests {
 			.andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
 			.andReturn();
 		
+
 		assertEquals(result.getResponse().getContentAsString(), exceptionMessage);
 	}
 }
