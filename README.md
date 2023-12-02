@@ -15,7 +15,7 @@
 &nbsp; }  
 }  
 
-## GET &nbsp; &nbsp; /average-weather &nbsp; &nbsp; получение средней температуры 
+## GET &nbsp; &nbsp; /average-weather &nbsp; &nbsp; получение среднесуточной температуры 
 **Параметры строки запроса:**  
 1. from - дата начала периода в формате "dd-mm-yyyy"  
 Тип данных: String  
